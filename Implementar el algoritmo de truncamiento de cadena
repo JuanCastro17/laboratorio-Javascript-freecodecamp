@@ -1,0 +1,10 @@
+function truncateString(str, num) {
+  // Verificamos si la longitud supera el límite
+  if (str.length > num) {
+    // Cortamos la cadena y concatenamos los puntos suspensivos
+    return str.slice(0, num) + "...";
+  } else {
+    // Si es igual o menor, devolvemos la cadena original
+    return str;
+  }
+}
