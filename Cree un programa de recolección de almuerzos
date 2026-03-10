@@ -1,0 +1,60 @@
+// 1. Declarar la variable lunches como una matriz vacía
+let lunches = [];
+
+// 2. Función para añadir al final (Usa .push)
+function addLunchToEnd(lunchArray, lunchItem) {
+  lunchArray.push(lunchItem);
+  console.log(`${lunchItem} added to the end of the lunch menu.`);
+  return lunchArray;
+}
+
+// 3. Función para añadir al inicio (Usa .unshift)
+function addLunchToStart(lunchArray, lunchItem) {
+  lunchArray.unshift(lunchItem);
+  console.log(`${lunchItem} added to the start of the lunch menu.`);
+  return lunchArray;
+}
+
+// 4. Función para eliminar el último (Usa .pop)
+function removeLastLunch(lunchArray) {
+  if (lunchArray.length > 0) {
+    const removedItem = lunchArray.pop();
+    console.log(`${removedItem} removed from the end of the lunch menu.`);
+  } else {
+    console.log("No lunches to remove.");
+  }
+  return lunchArray;
+}
+
+// 5. Función para eliminar el primero (Usa .shift)
+function removeFirstLunch(lunchArray) {
+  if (lunchArray.length > 0) {
+    const removedItem = lunchArray.shift();
+    console.log(`${removedItem} removed from the start of the lunch menu.`);
+  } else {
+    console.log("No lunches to remove.");
+  }
+  return lunchArray;
+}
+
+// 6. Función para obtener un almuerzo aleatorio
+function getRandomLunch(lunchArray) {
+  if (lunchArray.length > 0) {
+    const randomIndex = Math.floor(Math.random() * lunchArray.length);
+    const randomItem = lunchArray[randomIndex];
+    console.log(`Randomly selected lunch: ${randomItem}`);
+  } else {
+    console.log("No lunches available.");
+  }
+  // Esta función no necesita retornar la matriz según las instrucciones
+}
+
+// 7. Función para mostrar todo el menú (Usa .join)
+function showLunchMenu(lunchArray) {
+  if (lunchArray.length > 0) {
+    const menuString = lunchArray.join(", ");
+    console.log(`Menu items: ${menuString}`);
+  } else {
+    console.log("The menu is empty.");
+  }
+}
