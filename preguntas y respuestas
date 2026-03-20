@@ -1,0 +1,53 @@
+const questions = [
+  {
+    category: "Ciencia",
+    question: "¿Cuál es el símbolo químico del Oro?",
+    choices: ["Ag", "Au", "Fe"],
+    answer: "Au"
+  },
+  {
+    category: "Geografía",
+    question: "¿Cuál es el río más largo del mundo?",
+    choices: ["Amazonas", "Nilo", "Misisipi"],
+    answer: "Amazonas"
+  },
+  {
+    category: "Historia",
+    question: "¿En qué año terminó la Segunda Guerra Mundial?",
+    choices: ["1945", "1918", "1939"],
+    answer: "1945"
+  },
+  {
+    category: "Arte",
+    question: "¿Quién pintó 'La noche estrellada'?",
+    choices: ["Picasso", "Dalí", "Van Gogh"],
+    answer: "Van Gogh"
+  },
+  {
+    category: "Deporte",
+    question: "¿Cuántos jugadores hay en un equipo de fútbol?",
+    choices: ["11", "10", "12"],
+    answer: "11"
+  }
+];
+
+// Devuelve un objeto de pregunta aleatorio
+function getRandomQuestion(questionsArray) {
+  const randomIndex = Math.floor(Math.random() * questionsArray.length);
+  return questionsArray[randomIndex];
+}
+
+// Devuelve una opción aleatoria del array de choices
+function getRandomComputerChoice(choicesArray) {
+  const randomIndex = Math.floor(Math.random() * choicesArray.length);
+  return choicesArray[randomIndex];
+}
+
+// Compara la elección con la respuesta correcta
+function getResults(questionObject, computerChoice) {
+  if (computerChoice === questionObject.answer) {
+    return "The computer's choice is correct!";
+  } else {
+    return `The computer's choice is wrong. The correct answer is: ${questionObject.answer}`;
+  }
+}
