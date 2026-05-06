@@ -1,0 +1,49 @@
+// 1, 2, 3, 4. Normaliza el peso a kg (1 lb = 0.45 kg)
+function normalizeUnits(manifest) {
+  const newManifest = { ...manifest };
+  if (newManifest.unit === "lb") {
+    newManifest.weight = newManifest.weight * 0.45;
+    newManifest.unit = "kg";
+  }
+  return newManifest;
+}
+
+// 5-16. Valida el manifiesto y devuelve errores o un objeto vacío
+function validateManifest(manifest) {
+  const errors = {};
+  const fields = ["containerId", "destination", "weight", "unit", "hazmat"];
+
+  fields.forEach(field => {
+    if (!(field in manifest)) {
+      errors[field] = "Missing";
+    } else {
+      const val = manifest[field];
+      let isInvalid = false;
+
+      if (field === "containerId") isInvalid = !Number.isInteger(val) || val <= 0;
+      if (field === "destination") isInvalid = typeof val !== "string" || val.trim() === "";
+      if (field === "weight") isInvalid = typeof val !== "number" || Number.isNaN(val) || val <= 0;
+      if (field === "unit") isInvalid = val !== "kg" && val !== "lb";
+      if (field === "hazmat") isInvalid = typeof val !== "boolean";
+
+      if (isInvalid) errors[field] = "Invalid";
+    }
+  });
+
+  return errors;
+}
+
+// 17-26. Procesa el manifiesto y registra los resultados en consola
+function processManifest(manifest) {
+  const errors = validateManifest(manifest);
+  const isValid = Object.keys(errors).length === 0;
+
+  if (isValid) {
+    console.log(`Validation success: ${manifest.containerId}`);
+    const normalized = normalizeUnits(manifest);
+    console.log(`Total weight: ${normalized.weight} kg`);
+  } else {
+    console.log(`Validation error: ${manifest.containerId}`);
+    console.log(errors);
+  }
+}
